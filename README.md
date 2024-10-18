@@ -1,1 +1,1 @@
-# Boutiquetech
+# mvn-msql-techstore
