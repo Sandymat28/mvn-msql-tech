@@ -29,7 +29,7 @@ services:
 
   techstore:
     build: .
-    image: techstore-app-lari:lts
+    image: matsandy/techstore-app-lari:lts
     container_name: storetech-app
     ports:
       - "8082:8080"
