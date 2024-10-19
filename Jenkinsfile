@@ -13,7 +13,7 @@ pipeline {
     stage('Build') {
       steps {
        //sh 'mvn clean package'
-        sh 'docker build -t matsandy/techstore-app-lari:lts .'
+       //sh 'docker build -t matsandy/techstore-app-lari:lts .'
         sh 'docker-compose build'
       }
     }
