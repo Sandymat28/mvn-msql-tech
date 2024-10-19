@@ -1,5 +1,5 @@
-FROM openjdk:24-slim-bullseye
-
+#FROM openjdk:24-slim-bullseye
+FROM openjdk:24-jdk-bullseye
 WORKDIR /app
 #COPY  . .
 #RUN mvn clean package
