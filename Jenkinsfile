@@ -14,7 +14,7 @@ pipeline {
       steps {
        //sh 'mvn clean package'
        //sh 'docker build -t matsandy/techstore-app-lari:lts .'
-        sh 'docker-compose build'
+        sh 'docker-compose up -d'
       }
     }
     stage('Login') {
