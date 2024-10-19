@@ -8,6 +8,9 @@ pipeline {
   }
   stages {
     stage('Build') {
+      steps{
+        sh 'mvn clean package'
+      }
       steps {
         sh 'docker build -t matsandy/mkls:latest .'
       }
