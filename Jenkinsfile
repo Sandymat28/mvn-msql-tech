@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push matsandy/mkls:latest'
+        sh 'docker push matsandy/techstore-app-lari:lts'
       }
     }
   }
