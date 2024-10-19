@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t matsandy/lari:latest .'
+        sh 'docker build -t matsandy/mkls:latest .'
       }
     }
     stage('Login') {
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push matsandy/lari:latest'
+        sh 'docker push matsandy/mkls:latest'
       }
     }
   }
