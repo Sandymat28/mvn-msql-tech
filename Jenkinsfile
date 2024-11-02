@@ -68,7 +68,7 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech && docker-compose build' 
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech && docker compose build' 
            """
         }
       }
