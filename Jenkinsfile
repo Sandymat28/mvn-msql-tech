@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sshagent(credentials: [SSH_CREDENTIALS_ID]) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'echo "Connection successful!"','git clone 
+                        ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'echo "Connection successful!"' 
                     """
                 }
             }
