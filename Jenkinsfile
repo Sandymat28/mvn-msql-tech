@@ -1,15 +1,28 @@
 pipeline {
   agent any // Utiliser n'importe quel agent disponible
-  /*tools {
-    Maven maven:3.9.9
-    }*/
+  
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
+  
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DOCKER_ACCOUNT')
+    SSH_CREDENTIALS_ID = 'remote_credentials' // ID des credentials SSH dans Jenkins
+    SERVER_IP = '192.168.1.124'
+    USERNAME = 'larissa'
   }
+  
   stages {
+    stage('Verify SSH Connection') {
+            steps {
+                sshagent(credentials: [SSH_CREDENTIALS_ID]) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'echo "Connection successful!"','git clone 
+                    """
+                }
+            }
+        }
+    
     stage('Build') {
       steps {
        //sh 'mvn clean package'
