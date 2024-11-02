@@ -24,15 +24,15 @@ pipeline {
     }
       
     
-    stage('Insatll_maven') {
-      steps {
-        sshagent(credentials: [SSH_CREDENTIALS_ID]) {
-          sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'apt install maven' 
-           """
-        }
-      }
-    }
+    // stage('Insatll_maven') {
+    //   steps {
+    //     sshagent(credentials: [SSH_CREDENTIALS_ID]) {
+    //       sh """
+    //           ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'apt install maven' 
+    //        """
+    //     }
+    //   }
+    // }
 
     stage('Insatll_package') {
       steps {
