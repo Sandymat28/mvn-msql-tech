@@ -38,9 +38,7 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech' 
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'mvn clean package' 
-
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech && mvn clean package' 
            """
         }
       }
