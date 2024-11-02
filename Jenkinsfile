@@ -38,11 +38,23 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech' 
               ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'mvn clean package' 
+
            """
         }
       }
     }
+
+    // stage('Insatll_package') {
+    //   steps {
+    //     sshagent(credentials: [SSH_CREDENTIALS_ID]) {
+    //       sh """
+    //           ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'mvn clean package' 
+    //        """
+    //     }
+    //   }
+    // }
 
     stage('Build_image') {
       steps {
