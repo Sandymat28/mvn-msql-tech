@@ -28,7 +28,7 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'sudo apt install maven' 
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'sudo -S apt install maven' 
            """
         }
       }
