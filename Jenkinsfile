@@ -58,7 +58,7 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'docker build -t matsandy/techstore-app-lari:lts .' 
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech && docker build -t matsandy/techstore1-app-lari:lts .' 
            """
         }
       }
@@ -68,7 +68,7 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'docker-compose build' 
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'cd /home/larissa/mvn-msql-tech && docker-compose build' 
            """
         }
       }
@@ -88,7 +88,7 @@ pipeline {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
-              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'docker push matsandy/techstore-app-lari:lts' 
+              ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'docker push matsandy/techstore1-app-lari:lts' 
           """
         }
       }
