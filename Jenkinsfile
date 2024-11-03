@@ -1,9 +1,5 @@
 pipeline {
-  agent any // Utiliser n'importe quel agent disponible
-  
-  /*options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-  }*/
+  agent any 
   
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DOCKER_ACCOUNT')
@@ -23,18 +19,7 @@ pipeline {
       }
     }
       
-    
-    // stage('Insatll_maven') {
-    //   steps {
-    //     sshagent(credentials: [SSH_CREDENTIALS_ID]) {
-    //       sh """
-    //           ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'apt install maven' 
-    //        """
-    //     }
-    //   }
-    // }
-
-    stage('Insatll_package') {
+   stage('Insatll_package') {
       steps {
         sshagent(credentials: [SSH_CREDENTIALS_ID]) {
           sh """
@@ -43,16 +28,6 @@ pipeline {
         }
       }
     }
-
-    // stage('Insatll_package') {
-    //   steps {
-    //     sshagent(credentials: [SSH_CREDENTIALS_ID]) {
-    //       sh """
-    //           ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER_IP} 'mvn clean package' 
-    //        """
-    //     }
-    //   }
-    // }
 
     stage('Build_image') {
       steps {
